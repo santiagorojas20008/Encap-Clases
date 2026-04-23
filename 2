@@ -1,0 +1,26 @@
+class Persona:
+    
+    def __init__(self, nombre, edad, sexo):
+      
+        self.__nombre = nombre
+        self.__edad = edad
+        self.__sexo = sexo
+
+
+    def set_edad(self, nueva_edad):
+        if nueva_edad >= 0:
+            self.__edad = nueva_edad
+        else:
+            print("La edad no puede ser negativa")
+
+   
+    def get_edad(self):
+        return self.__edad
+
+    def mostrar_informacion(self):
+        print("Nombre:", self.__nombre)
+        print("Edad:", self.__edad)
+        print("Sexo:", self.__sexo)
+
+auto1.set_anio(2023)
+print(auto1.mostrar_info())
