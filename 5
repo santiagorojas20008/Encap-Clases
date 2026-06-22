@@ -1,0 +1,59 @@
+# =====================================================================
+# CLASE: ESTUDIANTE
+# =====================================================================
+class Estudiante:
+    def __init__(self, nombre, edad):
+        """Constructor de la clase Estudiante."""
+        self.nombre = nombre
+        self.edad = edad
+        self.notas = []  # Inicializamos las notas como una lista vacía
+
+    def agregar_nota(self, nota):
+        """Agrega una nueva nota a la lista del estudiante, validando el rango."""
+        if 0 <= nota <= 10:  # Suponiendo una escala típica de 0 a 10
+            self.notas.append(nota)
+            print(f" Nota {nota} agregada correctamente a {self.nombre}.")
+        else:
+            print(f" Error: La nota {nota} no es válida. Debe estar entre 0 y 10.")
+
+    def calcular_promedio(self):
+        """Calcula y devuelve el promedio de las notas del estudiante."""
+        if not self.notas:
+            return 0.0  # Si no tiene notas, el promedio es 0
+        
+        promedio = sum(self.notas) / len(self.notas)
+        return promedio
+
+    def mostrar_perfil(self):
+        """Muestra un resumen de los datos del estudiante."""
+        promedio_actual = self.calcular_promedio()
+        print("\n" + "-"*40)
+        print(f"Estudiante: {self.nombre}")
+        print(f"Edad:       {self.edad} años")
+        print(f"Notas:      {self.notas}")
+        print(f"Promedio:   {promedio_actual:.2f}")
+        print("-"*40 + "\n")
+
+
+# =====================================================================
+# BLOQUE DE EJECUCIÓN Y PRUEBAS
+# =====================================================================
+if __name__ == "__main__":
+    print("=== PRUEBAS DE LA CLASE ESTUDIANTE ===")
+    
+    # 1. Crear un estudiante
+    alumno = Estudiante("Ana Gómez", 20)
+    
+    # 2. Mostrar perfil inicial (sin notas)
+    alumno.mostrar_perfil()
+    
+    # 3. Agregar notas válidas
+    alumno.agregar_nota(8.5)
+    alumno.agregar_nota(9.0)
+    alumno.agregar_nota(7.8)
+    
+    # 4. Intentar agregar una nota inválida (Dará error)
+    alumno.agregar_nota(12.0)
+    
+    # 5. Mostrar perfil final con las notas y el promedio calculado
+    alumno.mostrar_perfil()
