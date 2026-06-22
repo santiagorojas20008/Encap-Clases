@@ -1,0 +1,46 @@
+# =====================================================================
+# CLASE: LIBRO
+# =====================================================================
+class Libro:
+    def __init__(self, titulo, autor, año_publicacion):
+        """Constructor de la clase Libro."""
+        self.titulo = titulo
+        self.autor = autor
+        self.año_publicacion = año_publicacion
+
+    def obtener_descripcion(self):
+        """Devuelve una cadena de texto con la descripción detallada del libro."""
+        return f"'{self.titulo}' escrito por {self.autor} (Publicado en {self.año_publicacion})."
+
+    def es_clasico(self):
+        """Verifica si el libro tiene más de 50 años desde su publicación."""
+        año_actual = 2026
+        antiguedad = año_actual - self.año_publicacion
+        return antiguedad > 50
+
+
+# =====================================================================
+# BLOQUE DE EJECUCIÓN Y PRUEBAS
+# =====================================================================
+if __name__ == "__main__":
+    print("=== PRUEBAS DE LA CLASE LIBRO ===")
+    
+    # Crear libros de prueba
+    libro_uno = Libro("Cien años de soledad", "Gabriel García Márquez", 1967)
+    libro_dos = Libro("Fiebre de canal", "Héctor Abad Faciolince", 2024)
+
+    # Probar libro 1 (Debería ser un clásico)
+    print(libro_uno.obtener_descripcion())
+    if libro_uno.es_clasico():
+        print(" Resultado: Este libro ya es considerado un clásico.")
+    else:
+        print("⏱️ Resultado: Aún no es considerado un clásico.")
+
+    print("-" * 40)
+
+    # Probar libro 2 (Es muy reciente)
+    print(libro_dos.obtener_descripcion())
+    if libro_dos.es_clasico():
+        print(" Resultado: Este libro ya es considerado un clásico.")
+    else:
+        print(" Resultado: Aún no es considerado un clásico (es relativamente nuevo).")
