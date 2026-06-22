@@ -1,0 +1,60 @@
+class CuentaBancaria:
+    def __init__(self, titular, numero_cuenta, saldo_inicial=0.0):
+        """Constructor de la clase CuentaBancaria."""
+        self.titular = titular
+        self.numero_cuenta = numero_cuenta
+        self.saldo = max(0.0, saldo_inicial)
+
+    def depositar(self, cantidad):
+        """Suma una cantidad positiva al saldo de la cuenta."""
+        if cantidad > 0:
+            self.saldo += cantidad
+            print(f" Depósito exitoso: Se han depositado ${cantidad:,.2f}.")
+            print(f"   Saldo actual: ${self.saldo:,.2f}")
+        else:
+            print(" Error: La cantidad a depositar debe ser mayor que cero.")
+
+    def retirar(self, cantidad):
+        """Resta una cantidad al saldo validando que existan fondos."""
+        if cantidad > 0:
+            if self.saldo >= cantidad:
+                self.saldo -= cantidad
+                print(f" Retiro exitoso: Se han retirado ${cantidad:,.2f}.")
+                print(f"   Saldo actual: ${self.saldo:,.2f}")
+            else:
+                print(f"Error: Fondos insuficientes. No puedes retirar ${cantidad:,.2f} porque tu saldo actual es de ${self.saldo:,.2f}.")
+        else:
+            print("Error: La cantidad a retirar debe ser mayor que cero.")
+
+    def mostrar_informacion(self):
+        """Muestra en pantalla el estado actual de la cuenta."""
+        print("\n" + "="*35)
+        print("       ESTADO DE LA CUENTA        ")
+        print("="*35)
+        print(f"Titular:          {self.titular}")
+        print(f"Número de Cuenta: {self.numero_cuenta}")
+        print(f"Saldo Actual:     ${self.saldo:,.2f}")
+        print("="*35 + "\n")
+
+
+# =====================================================================
+# BLOQUE DE PRUEBA (Asegúrate de que esto esté al final del archivo)
+# =====================================================================
+
+# 1. Crear una cuenta bancaria para Carlos con un saldo inicial de $500
+cuenta_carlos = CuentaBancaria("Carlos Mendoza", "987654321", 500.0)
+
+# 2. Ver la información inicial
+cuenta_carlos.mostrar_informacion()
+
+# 3. Hacer un depósito válido
+cuenta_carlos.depositar(250.50)
+
+# 4. Intentar hacer un retiro válido
+cuenta_carlos.retirar(100.0)
+
+# 5. Intentar retirar más dinero del que hay disponible (Debe dar error)
+cuenta_carlos.retirar(1000.0)
+
+# 6. Ver el estado final de la cuenta
+cuenta_carlos.mostrar_informacion()
