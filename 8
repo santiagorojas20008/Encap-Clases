@@ -1,0 +1,67 @@
+class Producto:
+    def __init__(self, nombre, precio, stock):
+        """
+        Constructor de la clase Producto.
+        :param nombre: Nombre del producto (str).
+        :param precio: Precio unitario del producto (float).
+        :param stock: Cantidad de unidades disponibles (int).
+        """
+        self.nombre = nombre
+        self.precio = precio
+        # Validación inicial: si se ingresa un stock negativo por error, lo dejamos en 0.
+        self.stock = stock if stock >= 0 else 0
+
+    def aumentar_stock(self, cantidad):
+        """Aumenta la cantidad de stock disponible."""
+        if cantidad > 0:
+            self.stock += cantidad
+            print(f"[SISTEMA] Se agregaron {cantidad} unidades de '{self.nombre}'. Stock actual: {self.stock}")
+        else:
+            print("[ERROR] La cantidad a aumentar debe ser mayor a 0.")
+
+    def disminuir_stock(self, cantidad):
+        """
+        Disminuye la cantidad de stock, validando que no quede en negativo.
+        """
+        if cantidad <= 0:
+            print("[ERROR] La cantidad a disminuir debe ser mayor a 0.")
+        elif self.stock - cantidad < 0:
+            print(f"[ERROR] Operación denegada. No hay suficiente stock de '{self.nombre}' (Stock actual: {self.stock}, intentaste retirar {cantidad}).")
+        else:
+            self.stock -= cantidad
+            print(f"[SISTEMA] Se retiraron {cantidad} unidades de '{self.nombre}'. Stock actual: {self.stock}")
+
+    def mostrar_informacion(self):
+        """Muestra por consola los datos actuales del producto."""
+        print("====================================")
+        print("       DATOS DEL PRODUCTO           ")
+        print("====================================")
+        print(f"-> Nombre: {self.nombre}")
+        print(f"-> Precio: ${self.precio:,.2f}")
+        print(f"-> Stock:  {self.stock} unidades")
+        print("====================================")
+
+
+# --- Bloque de ejecución principal ---
+if __name__ == "__main__":
+    # 1. Creamos un producto con stock inicial de 10
+    mi_producto = Producto(nombre="Teclado Mecánico", precio=85.50, stock=10)
+
+    # 2. Mostramos la información inicial
+    mi_producto.mostrar_informacion()
+
+    # 3. Aumentamos el stock en 5 unidades
+    print("\n--- Aumentando stock ---")
+    mi_producto.aumentar_stock(5)
+
+    # 4. Disminuimos el stock en 3 unidades (operación válida)
+    print("\n--- Disminuyendo stock ---")
+    mi_producto.disminuir_stock(3)
+
+    # 5. Intentamos disminuir el stock por debajo de cero (forzamos el error)
+    print("\n--- Intentando dejar el stock en negativo ---")
+    mi_producto.disminuir_stock(20)
+
+    # 6. Mostramos la información final para verificar que el stock se mantuvo a salvo
+    print("\n--- Estado final ---")
+    mi_producto.mostrar_informacion()
