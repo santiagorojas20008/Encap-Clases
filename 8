@@ -42,26 +42,20 @@ class Producto:
         print("====================================")
 
 
-# --- Bloque de ejecución principal ---
 if __name__ == "__main__":
-    # 1. Creamos un producto con stock inicial de 10
+
     mi_producto = Producto(nombre="Teclado Mecánico", precio=85.50, stock=10)
 
-    # 2. Mostramos la información inicial
     mi_producto.mostrar_informacion()
 
-    # 3. Aumentamos el stock en 5 unidades
     print("\n--- Aumentando stock ---")
     mi_producto.aumentar_stock(5)
 
-    # 4. Disminuimos el stock en 3 unidades (operación válida)
     print("\n--- Disminuyendo stock ---")
     mi_producto.disminuir_stock(3)
 
-    # 5. Intentamos disminuir el stock por debajo de cero (forzamos el error)
     print("\n--- Intentando dejar el stock en negativo ---")
     mi_producto.disminuir_stock(20)
 
-    # 6. Mostramos la información final para verificar que el stock se mantuvo a salvo
     print("\n--- Estado final ---")
     mi_producto.mostrar_informacion()
