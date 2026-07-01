@@ -1,0 +1,49 @@
+class Juego:
+    def __init__(self, nombre, genero, precio):
+        """
+        Constructor de la clase Juego.
+        :param nombre: Título del videojuego o juego de mesa (str).
+        :param genero: Género del juego (Ej. Aventura, RPG, Estrategia) (str).
+        :param precio: Precio actual del juego (float).
+        """
+        self.nombre = nombre
+        self.genero = genero
+        self.precio = float(precio)
+
+    def mostrar_informacion(self):
+        """Muestra por consola los datos detallados del juego."""
+        print("====================================")
+        print("         DATOS DEL JUEGO            ")
+        print("====================================")
+        print(f"-> Nombre: {self.nombre}")
+        print(f"-> Género: {self.genero}")
+        print(f"-> Precio: ${self.precio:,.2f}")
+        print("====================================")
+
+    def esta_en_oferta(self, precio_referencia):
+        """
+        Verifica si el juego está en oferta comparándolo con un valor dado.
+        :param precio_referencia: El precio máximo para considerar que es una oferta.
+        :return: True si está en oferta, False en caso contrario.
+        """
+        if self.precio < precio_referencia:
+            print(f"[OFERTA] ¡El juego '{self.nombre}' es una ganga! Su precio (${self.precio:,.2f}) es menor al límite de ${precio_referencia:,.2f}.")
+            return True
+        else:
+            print(f"[INFO] El juego '{self.nombre}' tiene un precio regular. (${self.precio:,.2f} no es menor que ${precio_referencia:,.2f}).")
+            return False
+
+
+if __name__ == "__main__":
+    # 1. Creamos un par de juegos para probar
+    juego_uno = Juego(nombre="The Witcher 3", genero="RPG", precio=15.99)
+    juego_dos = Juego(nombre="Cyberpunk 2077", genero="Acción/RPG", precio=49.99)
+
+    juego_uno.mostrar_informacion()
+
+   
+    limite_oferta = 30.00
+    
+    print("\n--- Verificando ofertas (Límite: $30.00) ---")
+    juego_uno.esta_en_oferta(limite_oferta)
+    juego_dos.esta_en_oferta(limite_oferta)
