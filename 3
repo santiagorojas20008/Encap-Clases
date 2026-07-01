@@ -41,20 +41,15 @@ class CuentaBancaria:
 # BLOQUE DE PRUEBA (Asegúrate de que esto esté al final del archivo)
 # =====================================================================
 
-# 1. Crear una cuenta bancaria para Carlos con un saldo inicial de $500
+
 cuenta_carlos = CuentaBancaria("Carlos Mendoza", "987654321", 500.0)
 
-# 2. Ver la información inicial
 cuenta_carlos.mostrar_informacion()
 
-# 3. Hacer un depósito válido
 cuenta_carlos.depositar(250.50)
 
-# 4. Intentar hacer un retiro válido
 cuenta_carlos.retirar(100.0)
 
-# 5. Intentar retirar más dinero del que hay disponible (Debe dar error)
 cuenta_carlos.retirar(1000.0)
 
-# 6. Ver el estado final de la cuenta
 cuenta_carlos.mostrar_informacion()
