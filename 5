@@ -41,19 +41,14 @@ class Estudiante:
 if __name__ == "__main__":
     print("=== PRUEBAS DE LA CLASE ESTUDIANTE ===")
     
-    # 1. Crear un estudiante
     alumno = Estudiante("Ana Gómez", 20)
     
-    # 2. Mostrar perfil inicial (sin notas)
     alumno.mostrar_perfil()
     
-    # 3. Agregar notas válidas
     alumno.agregar_nota(8.5)
     alumno.agregar_nota(9.0)
     alumno.agregar_nota(7.8)
     
-    # 4. Intentar agregar una nota inválida (Dará error)
     alumno.agregar_nota(12.0)
     
-    # 5. Mostrar perfil final con las notas y el promedio calculado
     alumno.mostrar_perfil()
