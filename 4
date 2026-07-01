@@ -25,11 +25,9 @@ class Libro:
 if __name__ == "__main__":
     print("=== PRUEBAS DE LA CLASE LIBRO ===")
     
-    # Crear libros de prueba
     libro_uno = Libro("Cien años de soledad", "Gabriel García Márquez", 1967)
     libro_dos = Libro("Fiebre de canal", "Héctor Abad Faciolince", 2024)
 
-    # Probar libro 1 (Debería ser un clásico)
     print(libro_uno.obtener_descripcion())
     if libro_uno.es_clasico():
         print(" Resultado: Este libro ya es considerado un clásico.")
@@ -38,7 +36,6 @@ if __name__ == "__main__":
 
     print("-" * 40)
 
-    # Probar libro 2 (Es muy reciente)
     print(libro_dos.obtener_descripcion())
     if libro_dos.es_clasico():
         print(" Resultado: Este libro ya es considerado un clásico.")
