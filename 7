@@ -1,0 +1,52 @@
+class Empleado:
+    def __init__(self, nombre, salario, departamento):
+        """
+        Constructor de la clase Empleado.
+        :param nombre: Nombre del empleado (str).
+        :param salario: Salario mensual o anual (float).
+        :param departamento: Área o departamento donde trabaja (str).
+        """
+        self.nombre = nombre
+        self.salario = salario
+        self.departamento = departamento
+
+    def aumentar_salario(self, porcentaje):
+        """
+        Aumenta el salario actual en base a un porcentaje dado.
+        Ejemplo: un porcentaje de 10 sumará el 10% al salario.
+        """
+        if porcentaje > 0:
+            aumento = self.salario * (porcentaje / 100)
+            self.salario += aumento
+            print(f"[SISTEMA] Se ha aplicado un aumento del {porcentaje}% a {self.nombre}.")
+        else:
+            print("[ERROR] El porcentaje de aumento debe ser mayor a 0.")
+
+    def mostrar_informacion(self):
+        """Muestra por consola los datos actuales del empleado."""
+        print("====================================")
+        print("       INFORMACIÓN DEL EMPLEADO     ")
+        print("====================================")
+        print(f"-> Nombre:       {self.nombre}")
+        print(f"-> Departamento: {self.departamento}")
+        print(f"-> Salario:      ${self.salario:,.2f}")
+        print("====================================")
+
+
+# --- Bloque de ejecución principal ---
+if __name__ == "__main__":
+    # 1. Creamos un empleado con sus datos iniciales
+    empleado_uno = Empleado(nombre="Carlos Mendoza", salario=3000.0, departamento="IT")
+
+    # 2. Mostramos la información inicial
+    print("Mostrando datos iniciales:")
+    empleado_uno.mostrar_informacion()
+    print("\n")
+
+    # 3. Aplicamos un aumento del 12%
+    empleado_uno.aumentar_salario(12)
+    print("\n")
+
+    # 4. Mostramos la información actualizada para verificar el cambio
+    print("Mostrando datos actualizados:")
+    empleado_uno.mostrar_informacion()
