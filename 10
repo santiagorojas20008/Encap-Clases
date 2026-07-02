@@ -1,0 +1,65 @@
+import math
+
+class Circulo:
+    def __init__(self, radio):
+        """
+        Constructor de la clase Circulo.
+        :param radio: Radio inicial del círculo.
+        """
+        # Al asignar 'self.radio', Python llama automáticamente al método setter
+        # que hemos definido más abajo para aplicar la validación.
+        self.radio = radio
+
+    @property
+    def radio(self):
+        """Método Getter: devuelve el valor actual del radio."""
+        return self._radio
+
+    @radio.setter
+    def radio(self, valor):
+        """
+        Método Setter: valida el valor antes de asignarlo.
+        Asegura que el radio nunca sea negativo.
+        """
+        if valor < 0:
+            print(f"[ADVERTENCIA] Intentaste asignar un radio de {valor}. No puede ser negativo, se establecerá en 0.")
+            self._radio = 0.0
+        else:
+            self._radio = float(valor)
+
+    def calcular_area(self):
+        """Calcula el área del círculo."""
+        return math.pi * (self.radio ** 2)
+
+    def calcular_circunferencia(self):
+        """Calcula la circunferencia (perímetro) del círculo."""
+        return 2 * math.pi * self.radio
+
+    def mostrar_informacion(self):
+        """Muestra por consola los datos actuales del círculo."""
+        print("====================================")
+        print("         DATOS DEL CÍRCULO          ")
+        print("====================================")
+        print(f"-> Radio:          {self.radio}")
+        # Formateamos los resultados a 2 decimales para que sea fácil de leer
+        print(f"-> Área:           {self.calcular_area():.2f}")
+        print(f"-> Circunferencia: {self.calcular_circunferencia():.2f}")
+        print("====================================")
+
+
+if __name__ == "__main__":
+    # 1. Creamos un círculo válido con radio de 5
+    print("\n--- Creando círculo válido ---")
+    mi_circulo = Circulo(radio=5)
+    mi_circulo.mostrar_informacion()
+
+    print("\n--- Creando círculo con radio negativo ---")
+    circulo_invalido = Circulo(radio=-3)
+    circulo_invalido.mostrar_informacion()
+
+    print("\n--- Intentando modificar el radio a negativo ---")
+    mi_circulo.radio = -10
+    
+    print("\n--- Modificando el radio correctamente ---")
+    mi_circulo.radio = 7
+    mi_circulo.mostrar_informacion()
